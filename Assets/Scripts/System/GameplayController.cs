@@ -62,6 +62,8 @@ public class GameplayController : MonoBehaviour
 
                     CharacterController.Instance.UpdateCharacter();
 
+                    if (levelCurrent != null)
+                        levelCurrent.UpdateObjs();
 #if UNITY_EDITOR
                     if (Input.GetKeyDown(KeyCode.R))
                     {

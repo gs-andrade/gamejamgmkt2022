@@ -145,7 +145,7 @@ public class CharacterController : MonoBehaviour, IResetable
 
                         wasOnAir = !grounded;
                         // JUMP
-                        if (input.JumpPressed && inputDelay <= 0)
+                        if (input.JumpPressed && inputDelay <= 0 && !Chicote.activeInHierarchy)
                         {
                             // isHoldingJumpButton = true;
 
@@ -173,14 +173,18 @@ public class CharacterController : MonoBehaviour, IResetable
                             SoundController.instance.PlayAudioEffect("pasos", SoundAction.Stop);
                         }
 
-                        character.SetXVelocity(horizontalMOvement);
 
                         if (input.Attack && attackCd <= 0)
                         {
                             Chicote.SetActive(true);
                             attackCd = AttackCd;
                             tempAttackDuration = 0.25f;
+                            character.SetAnimationTrigger("Attack");
                         }
+
+                        // character.SetAnimationBool("Attack", false);
+
+                        character.SetXVelocity(horizontalMOvement, !Chicote.activeInHierarchy);
 
                         character.SetAnimationBool("IsWalking", isWalking);
 

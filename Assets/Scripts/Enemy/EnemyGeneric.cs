@@ -21,7 +21,14 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
     protected Vector2 startPosition;
     public BoxCollider2D PlataformCollider;
 
-    public abstract void SetupOnStartLevel();
+    public virtual void SetupOnStartLevel()
+    {
+        baseColor = Renderer.color;
+
+        startPosition = transform.position;
+
+        enemyState = EnemyState.Normal;
+    }
 
     public virtual void ResetObject()
     {
@@ -36,15 +43,6 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
         {
             return;
         }
-    }
-
-    protected virtual void Start()
-    {
-        baseColor = Renderer.color;
-
-        startPosition = transform.position;
-
-        enemyState = EnemyState.Normal;
     }
     public virtual bool DealDamage(CharacterInstance character)
     {

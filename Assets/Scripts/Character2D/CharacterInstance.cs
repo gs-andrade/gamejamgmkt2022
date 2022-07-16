@@ -30,7 +30,7 @@ public class CharacterInstance : MonoBehaviour, IDamagable
         cachedTf = transform;
         BoxCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>(true);
         renderer = GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -119,12 +119,12 @@ public class CharacterInstance : MonoBehaviour, IDamagable
 
     public void SetAnimationTrigger(string name)
     {
-        // animator.SetTrigger(name);
+        animator.SetTrigger(name);
     }
 
     public void SetAnimationBool(string name, bool state)
     {
-        //  animator.SetBool(name, state);
+        animator.SetBool(name, state);
     }
 
 

@@ -53,14 +53,6 @@ public class EnemyPatrol : EnemyGeneric
             nextLocation = points[moveIndex].transform.position;
     }
 
-    public override void SetupOnStartLevel()
-    {
-        if (animator == null)
-            animator = GetComponent<Animator>();
-
-      //  animator.SetBool("Alive", true);
-    }
-
     public override void ResetObject()
     {
         base.ResetObject();
@@ -97,16 +89,7 @@ public class EnemyPatrol : EnemyGeneric
                 cachedTf.localScale = new Vector3(1, 1, 1);*/
         }
     }
-
-
-    public override void TakeDamage(Vector2 damageOrigin)
-    {
-        //SoundController.instance.PlayAudioEffect("CrabDie");
-        // animator.SetBool("Alive", false);
-        SetCurrentLife(lifeCurrent - 1);
-    }
     
-
     public override bool DealDamage(CharacterInstance character)
     {
         if (!IsAlive())
