@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDamagable 
 {
-    void TakeDamage(DamageSettings damageSettings);
+    void TakeDamage(Vector2 damagerDirection);
 
     bool IsAlive();
 

@@ -11,10 +11,7 @@ public class PlayerInput
     [HideInInspector] public bool JumpPressed;
     [HideInInspector] public bool JumpHolding;
 
-    [HideInInspector] public bool Shoot;
-
-    [HideInInspector] public bool ColorPressed;
-    [HideInInspector] public int ColorSwapDirection;
+    [HideInInspector] public bool Attack;
 
     public bool HorizontalIsLeft()
     {
@@ -31,6 +28,8 @@ public class PlayerInput
 
         JumpPressed = Input.GetButtonDown("Jump");
         JumpHolding = Input.GetButton("Jump");
+
+        Attack = Input.GetButtonDown("Fire1");
 
     }
 
