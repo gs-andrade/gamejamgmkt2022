@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnemyPatrol : EnemyGeneric
 {
 
+    public bool TurnAround = true;
     public float Speed = 5f;
 
     private DrawPoint[] points;
@@ -26,17 +27,15 @@ public class EnemyPatrol : EnemyGeneric
     }
 
 
-
-
-    private void Awake()
+    public override void SetupOnStartLevel()
     {
+        base.SetupOnStartLevel();
+
         cachedTf = transform;
         points = cachedTf.parent.GetComponentsInChildren<DrawPoint>(true);
 
-        if(points.Length != 0)
+        if (points.Length != 0)
             nextLocation = points[0].transform.position;
-
-        SetCurrentLife(LifeMax);
     }
 
     private void SetNextDestination()
@@ -81,12 +80,16 @@ public class EnemyPatrol : EnemyGeneric
         {
             cachedTf.position = Vector2.MoveTowards(cachedTf.position, nextLocation, Speed * Time.deltaTime);
 
-            var direction = nextLocation.x - cachedTf.position.x;
+            if (TurnAround)
+            {
 
-            if (direction > 0)
-                cachedTf.localScale = new Vector3(1, 1, 1);
-            else
-                cachedTf.localScale = new Vector3(-1, 1, 1);
+                var direction = nextLocation.x - cachedTf.position.x;
+
+                if (direction > 0)
+                    cachedTf.localScale = new Vector3(1, 1, 1);
+                else
+                    cachedTf.localScale = new Vector3(-1, 1, 1);
+            }
         }
     }
     

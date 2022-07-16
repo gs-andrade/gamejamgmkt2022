@@ -33,6 +33,8 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
         animator = GetComponentInChildren<Animator>(true);
 
         animationSpeed = animator.speed;
+
+        SetCurrentLife(LifeMax);
     }
 
     public virtual void ResetObject()
@@ -89,7 +91,7 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
     {
         lifeCurrent = life;
 
-        if(lifeCurrent <= 0)
+        if (lifeCurrent <= 0)
         {
             switch (DeathType)
             {
@@ -106,6 +108,18 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
                         enemyState = EnemyState.Freeze;
                         animator.speed = 0;
                         PlataformCollider.enabled = true;
+                        break;
+                    }
+
+                case EnemyDeathType.ResetNumber:
+                    {
+                        if (LifeMax <= 0)
+                        {
+                            Debug.LogError("Vida max n pode ser 0");
+                            LifeMax = 1;
+                        }
+
+                        SetCurrentLife(LifeMax);
                         break;
                     }
             }
@@ -128,6 +142,11 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
     public Transform GetTransform()
     {
         return transform;
+    }
+
+    public int GetCurrentLife()
+    {
+        return lifeCurrent;
     }
 
 
