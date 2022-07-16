@@ -12,9 +12,6 @@ public class CharacterController : MonoBehaviour, IResetable
     public GameObject Chicote;
     public float AttackCd;
 
-
-    private float tempAttackDuration;
-
     public static CharacterController Instance;
 
     private CharacterInstance character;
@@ -56,6 +53,7 @@ public class CharacterController : MonoBehaviour, IResetable
     {
         character.SetMovement(Vector2.zero);
         character.transform.position = startPosition;
+        AttackFinish();
     }
     public void Setup()
     {
@@ -92,6 +90,21 @@ public class CharacterController : MonoBehaviour, IResetable
         SoundController.instance.PlayAudioEffect(name);
     }
 
+    public void AttackStart()
+    {
+        Chicote.SetActive(true);
+        attackCd = AttackCd;
+    }
+
+    public void AttackFinish()
+    {
+        Chicote.SetActive(false);
+    }
+
+    public void TakeDamage()
+    {
+        AttackFinish();
+    }
     public void UpdateCharacter()
     {
         //PlayCharacterSound("pasos");
@@ -104,11 +117,6 @@ public class CharacterController : MonoBehaviour, IResetable
 
         if (coyoteJump > 0)
             coyoteJump -= Time.deltaTime;
-
-        if (tempAttackDuration > 0)
-            tempAttackDuration -= Time.deltaTime;
-        else
-            Chicote.SetActive(false);
 
         if (character.IsDisabled())
             return;
@@ -176,9 +184,6 @@ public class CharacterController : MonoBehaviour, IResetable
 
                         if (input.Attack && attackCd <= 0)
                         {
-                            Chicote.SetActive(true);
-                            attackCd = AttackCd;
-                            tempAttackDuration = 0.25f;
                             character.SetAnimationTrigger("Attack");
                         }
 

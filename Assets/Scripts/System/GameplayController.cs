@@ -14,6 +14,10 @@ public class GameplayController : MonoBehaviour
 
     private int levelIndex;
 
+    [Header("Teste")]
+    public bool ForceLevelStart;
+    public int ForcedLevelStart;
+
     private void Awake()
     {
         if (Instance == null)
@@ -24,6 +28,10 @@ public class GameplayController : MonoBehaviour
 
         levels = GetComponentsInChildren<Level>(true);
         levelIndex = -1;
+
+        if (ForceLevelStart)
+            levelIndex = ForcedLevelStart - 1;
+
         StartNextLevel();
 
     }

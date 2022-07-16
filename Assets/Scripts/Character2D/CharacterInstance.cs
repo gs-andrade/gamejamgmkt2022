@@ -147,9 +147,12 @@ public class CharacterInstance : MonoBehaviour, IDamagable
 
         invunerabilityTimer = InvunerabilityTime;
 
-
         SetMovement(new Vector2(KnocbackForce.x * dirX, KnocbackForce.y), false);
         disableTimer = DisableTime;
+
+        CharacterController.Instance.TakeDamage();
+        SetAnimationTrigger("TakeDamage");
+        SetAnimationBool("IsWalking", false);
 
 
         SoundController.instance.PlayAudioEffect("damaged1");

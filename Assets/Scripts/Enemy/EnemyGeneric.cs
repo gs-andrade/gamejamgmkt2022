@@ -16,6 +16,7 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
     protected int lifeCurrent;
 
     protected float disableTime;
+    private float animationSpeed;
 
     protected Animator animator;
     protected Vector2 startPosition;
@@ -28,6 +29,10 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
         startPosition = transform.position;
 
         enemyState = EnemyState.Normal;
+
+        animator = GetComponentInChildren<Animator>(true);
+
+        animationSpeed = animator.speed;
     }
 
     public virtual void ResetObject()
@@ -66,6 +71,7 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
             PlataformCollider.enabled = false;
             enemyState = EnemyState.Normal;
             SetCurrentLife(LifeMax);
+            animator.speed = animationSpeed;
         }
         else
         {
@@ -96,8 +102,9 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
 
                 case EnemyDeathType.Freeze:
                     {
-                        Renderer.color = Color.blue;
+                        Renderer.color = Color.cyan;
                         enemyState = EnemyState.Freeze;
+                        animator.speed = 0;
                         PlataformCollider.enabled = true;
                         break;
                     }
