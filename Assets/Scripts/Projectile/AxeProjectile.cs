@@ -30,9 +30,6 @@ public class AxeProjectile : MonoBehaviour
     {
         AliveTime -= Time.deltaTime;
 
-
-          
-
         if (AliveTime <= 0)
             Destroy(gameObject);
     }

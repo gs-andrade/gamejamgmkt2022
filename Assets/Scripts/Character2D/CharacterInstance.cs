@@ -32,6 +32,7 @@ public class CharacterInstance : MonoBehaviour, IDamagable
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>(true);
         renderer = GetComponentInChildren<SpriteRenderer>();
+
     }
 
     public void SnapToGround()

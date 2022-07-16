@@ -13,4 +13,9 @@ public class ChicoteAnimationTrigger : MonoBehaviour
     {
         CharacterController.Instance.AttackFinish();
     }
+
+    public void GameOver()
+    {
+        Time.timeScale = 1;
+    }
 }
