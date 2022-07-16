@@ -6,64 +6,50 @@ using UnityEngine.UI;
 public class GameplayController : MonoBehaviour
 {
     public static GameplayController Instance;
-    public float TotalTimeBeforeReset;
 
     private GameState state;
 
-    private float currentTimeBeforeReset;
+    private Level[] levels;
+    private Level levelCurrent;
 
-    private List<int> keys = new List<int>();
-
-    private List<IResetable> resetables = new List<IResetable>();
-
-
-    private float tempoDecorrido;
+    private int levelIndex;
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
 
-       if (Instance != this)
-        Destroy(gameObject);
+        if (Instance != this)
+            Destroy(gameObject);
+
+        levels = GetComponentsInChildren<Level>(true);
+        levelIndex = -1;
+        StartNextLevel();
 
     }
 
-    private void Start()
+    public void StartNextLevel()
     {
-        ResetWorld();
-    }
+        levelIndex++;
 
-    public bool HasKey(int key)
-    {
-        for (int i = 0; i < keys.Count; i++)
+        if(levelIndex >= levels.Length)
         {
-            if (keys[i] == key)
-                return true;
+            Debug.Log("End Game");
+            return;
         }
 
-        return false;
+        if (levelCurrent != null)
+            levelCurrent.gameObject.SetActive(false);
+
+        levelCurrent = levels[levelIndex];
+        levelCurrent.Setup();
+        levelCurrent.gameObject.SetActive(true);
     }
 
-    public void AddKey(int key)
+    private void ResetLevel()
     {
-        keys.Add(key);
-    }
-
-    public void RegisterToReset(IResetable resetable)
-    {
-        resetables.Add(resetable);
-    }
-
-    private void ResetWorld()
-    {
-       // SoundController.instance.PlayAudioEffect("gamejaaj", SoundAction.Reset);
         CharacterController.Instance.ForceState(CharacterState.Normal);
-
-        for (int i = 0; i < resetables.Count; i++)
-        {
-            resetables[i].ResetObject();
-        }
+        levelCurrent.ResetLevel();
     }
 
     private void Update()
@@ -75,16 +61,17 @@ public class GameplayController : MonoBehaviour
                 {
 
                     CharacterController.Instance.UpdateCharacter();
+
 #if UNITY_EDITOR
                     if (Input.GetKeyDown(KeyCode.R))
                     {
-                        ResetWorld();
+                        ResetLevel();
                     }
 #endif
                     break;
                 }
 
-               
+
 
         }
     }

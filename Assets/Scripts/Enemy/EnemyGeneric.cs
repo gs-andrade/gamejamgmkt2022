@@ -6,19 +6,51 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
 {
     [Header("Generic Enemy Attributes")]
     public int LifeMax = 6;
+    public EnemyDeathType DeathType;
+    public SpriteRenderer Renderer;
+    public TextMesh LifeText;
+
+    protected EnemyState enemyState;
+    private Color baseColor;
 
     protected int lifeCurrent;
 
     protected float disableTime;
 
+    protected Animator animator;
+    protected Vector2 startPosition;
+    public BoxCollider2D PlataformCollider;
+
     public abstract void SetupOnStartLevel();
 
-    public abstract void ResetObject();
+    public virtual void ResetObject()
+    {
+        transform.position = startPosition;
+        gameObject.SetActive(true);
+        SetCurrentLife(LifeMax);
+    }
 
-    public abstract void UpdateObj();
+    public virtual void UpdateObj()
+    {
+        if (enemyState == EnemyState.Freeze)
+        {
+            return;
+        }
+    }
 
+    protected virtual void Start()
+    {
+        baseColor = Renderer.color;
+
+        startPosition = transform.position;
+
+        enemyState = EnemyState.Normal;
+    }
     public virtual bool DealDamage(CharacterInstance character)
     {
+        if (enemyState == EnemyState.Freeze)
+            return false;
+
         if (disableTime <= 0 && !character.IsVunerable())
         {
             character.TakeDamage(transform.position);
@@ -28,7 +60,55 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
         return false;
     }
 
-    public abstract void TakeDamage(Vector2 damagerDirection);
+    public virtual void TakeDamage(Vector2 damagerDirection)
+    {
+        if (enemyState == EnemyState.Freeze)
+        {
+            Renderer.color = baseColor;
+            PlataformCollider.enabled = false;
+            enemyState = EnemyState.Normal;
+            SetCurrentLife(LifeMax);
+        }
+        else
+        {
+            SetCurrentLife(lifeCurrent - 1);
+        }
+    }
+
+    public virtual void SetLifeText(string newText)
+    {
+        if (LifeText != null)
+            LifeText.text = newText;
+    }
+
+    protected void SetCurrentLife(int life)
+    {
+        lifeCurrent = life;
+
+        if(lifeCurrent <= 0)
+        {
+            switch (DeathType)
+            {
+                case EnemyDeathType.Normal:
+                    {
+                        //play animation
+                        gameObject.SetActive(false);
+                        break;
+                    }
+
+                case EnemyDeathType.Freeze:
+                    {
+                        Renderer.color = Color.blue;
+                        enemyState = EnemyState.Freeze;
+                        PlataformCollider.enabled = true;
+                        break;
+                    }
+            }
+        }
+
+
+        SetLifeText(lifeCurrent.ToString());
+    }
 
     public bool IsAlive()
     {
@@ -46,4 +126,16 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
     }
 
 
+}
+
+public enum EnemyState
+{
+    Normal,
+    Freeze,
+}
+public enum EnemyDeathType
+{
+    Normal,
+    Freeze,
+    ResetNumber,
 }

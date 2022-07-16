@@ -8,15 +8,12 @@ public class EnemyPatrol : EnemyGeneric
 
     public float Speed = 5f;
 
-    public TextMesh LifeText;
-
     private DrawPoint[] points;
     private int moveIndex;
     private Vector2 nextLocation;
     private Transform cachedTf;
 
-    private Animator animator;
-    private Vector2 startPosition;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var character = collision.gameObject.GetComponent<CharacterInstance>();
@@ -42,17 +39,6 @@ public class EnemyPatrol : EnemyGeneric
         SetCurrentLife(LifeMax);
     }
 
-    private void Start()
-    {
-        GameplayController.Instance.RegisterToReset(this);
-    }
-
-    private void SetCurrentLife(int life)
-    {
-        lifeCurrent = life;
-        LifeText.text = lifeCurrent.ToString();
-    }
-
     private void SetNextDestination()
     {
         moveIndex++;
@@ -63,7 +49,8 @@ public class EnemyPatrol : EnemyGeneric
         if (moveIndex >= points.Length)
             moveIndex = 0;
 
-        nextLocation = points[moveIndex].transform.position;
+        if (points.Length != 0)
+            nextLocation = points[moveIndex].transform.position;
     }
 
     public override void SetupOnStartLevel()
@@ -76,20 +63,21 @@ public class EnemyPatrol : EnemyGeneric
 
     public override void ResetObject()
     {
+        base.ResetObject();
+
         moveIndex = 0;
-        gameObject.SetActive(true);
-        SetCurrentLife(LifeMax);
         //animator.SetBool("Alive", true);
     }
 
     public override void UpdateObj()
     {
+        base.UpdateObj();
+
         if (!IsAlive())
             return;
 
         if (disableTime > 0)
         {
-            disableTime -= Time.deltaTime;
             return;
         }
 
@@ -103,10 +91,10 @@ public class EnemyPatrol : EnemyGeneric
 
             var direction = nextLocation.x - cachedTf.position.x;
 
-            if (direction > 0)
+            /*if (direction > 0)
                 cachedTf.localScale = new Vector3(-1, 1, 1);
             else
-                cachedTf.localScale = new Vector3(1, 1, 1);
+                cachedTf.localScale = new Vector3(1, 1, 1);*/
         }
     }
 

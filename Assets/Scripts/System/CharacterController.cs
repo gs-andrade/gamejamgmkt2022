@@ -52,12 +52,6 @@ public class CharacterController : MonoBehaviour, IResetable
         state = newState;
     }
 
-    private void Start()
-    {
-        GameplayController.Instance.RegisterToReset(this);
-    }
-
-
     public void ResetObject()
     {
         character.SetMovement(Vector2.zero);
@@ -75,8 +69,12 @@ public class CharacterController : MonoBehaviour, IResetable
             input = new PlayerInput();
 
         state = CharacterState.Normal;
+    }
 
-        startPosition = character.transform.position;
+    public void SetStartPosition(Vector2 startPosition)
+    {
+        this.startPosition = startPosition;
+        ResetObject();
     }
 
     public CharacterInstance GetPlayer()
