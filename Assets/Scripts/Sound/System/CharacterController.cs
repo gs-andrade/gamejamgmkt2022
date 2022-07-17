@@ -223,12 +223,11 @@ public class CharacterController : MonoBehaviour, IResetable
                         // character.SetAnimationBool("Attack", false);
                         if (grounded)
                         {
-                            if (isAttacking)
-                                horizontalMOvement = 0;
+                            //if (isAttacking)
+                              //  horizontalMOvement = 0;
 
-                            character.SetXVelocity(horizontalMOvement, !Chicote.activeInHierarchy);
                         }
-
+                        character.SetXVelocity(horizontalMOvement, !Chicote.activeInHierarchy);
                         character.SetAnimationBool("IsWalking", isWalking);
 
                         break;
