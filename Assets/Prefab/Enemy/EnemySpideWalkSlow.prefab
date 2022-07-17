@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LifeMax: 1
+  StartingLife: 1
   DeathType: 0
   Renderer: {fileID: 4274719139936122509}
   LifeText: {fileID: 2953454103089171165}

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 5
   JumpForce: 17
-  lifeMax: 1
+  lifeMax: 6
   Chicote: {fileID: 2642694088741714001}
   AttackCd: 0.2
 --- !u!1 &2642694088741714001

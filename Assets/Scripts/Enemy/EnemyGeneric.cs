@@ -6,6 +6,7 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
 {
     [Header("Generic Enemy Attributes")]
     public int LifeMax = 6;
+    public int StartingLife = 6;
     public EnemyDeathType DeathType;
     public SpriteRenderer Renderer;
     public TextMesh LifeText;
@@ -34,14 +35,14 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
 
         animationSpeed = animator.speed;
 
-        SetCurrentLife(LifeMax);
+        SetCurrentLife(StartingLife);
     }
 
     public virtual void ResetObject()
     {
         transform.position = startPosition;
         gameObject.SetActive(true);
-        SetCurrentLife(LifeMax);
+        SetCurrentLife(StartingLife);
     }
 
     public virtual void UpdateObj()
