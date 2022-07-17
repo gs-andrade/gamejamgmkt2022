@@ -11,7 +11,7 @@ public class ControleDoDado : MonoBehaviour
     {
         Selecionado = Menu.GetInteger("Estado");
 
-        if(Input.GetKeyDown(KeyCode.UpArrow) && Selecionado < 3)
+        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) && Selecionado < 3)
         {
 
             Selecionado ++;
@@ -20,7 +20,7 @@ public class ControleDoDado : MonoBehaviour
             
         }
         
-        if(Input.GetKeyDown(KeyCode.DownArrow) && Selecionado > 1)
+        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) && Selecionado > 1)
         {
           
             Selecionado --;
