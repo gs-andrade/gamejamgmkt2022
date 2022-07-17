@@ -120,7 +120,7 @@ TextureImporter:
         width: 193
         height: 162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -140,8 +140,8 @@ TextureImporter:
         y: 4
         width: 193
         height: 159
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.49999985, y: 0.46888906}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,12 +157,12 @@ TextureImporter:
       name: 4ranha 1_2
       rect:
         serializedVersion: 2
-        x: 443
+        x: 444
         y: 1
         width: 213
         height: 162
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.6579203, y: 0.48778608}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
