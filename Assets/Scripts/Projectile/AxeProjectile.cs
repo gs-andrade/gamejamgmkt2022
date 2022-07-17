@@ -15,7 +15,7 @@ public class AxeProjectile : MonoBehaviour
         var distance = Mathf.Abs(playerPos.x - transform.position.x);
 
         Rb.AddForce(new Vector2(distance * dir * Force.x, Force.y));
-        FindObjectOfType<AudioManeger>().Play("Machado", 1);
+        AudioManeger.Instance.Play("Machado", 1);
         Rb.AddForce(Force);
         Debug.Log("aqui");
     }

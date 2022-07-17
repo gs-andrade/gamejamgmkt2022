@@ -79,12 +79,12 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
         else if (lifeCurrent > 1)
         {
             SetCurrentLife(lifeCurrent - 1);
-            FindObjectOfType<AudioManeger>().Play("Golpe", 1);
+            AudioManeger.Instance.Play("Golpe", 1);
         }
         else
         {
             SetCurrentLife(lifeCurrent - 1);
-            FindObjectOfType<AudioManeger>().Play("MorteInimigo", 1);
+            AudioManeger.Instance.Play("MorteInimigo", 1);
         }
     }
 

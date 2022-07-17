@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 1525563013276410700}
   - component: {fileID: 1525563013276410701}
   - component: {fileID: 1525563013276410698}
+  - component: {fileID: 3308378654235449854}
   m_Layer: 5
-  m_Name: "Transi\xE7\xE3o"
+  m_Name: TransicaoControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,6 +121,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3308378654235449854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525563013276410699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df297ca46f8c41408d4bfdf90cc2b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1525563013709234617
 GameObject:
   m_ObjectHideFlags: 0

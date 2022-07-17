@@ -303,8 +303,8 @@ MonoBehaviour:
     m_Bits: 8
   moveChar: 1
   InvunerabilityTime: 1
-  KnocbackForce: {x: 4, y: 5}
-  DisableTime: 1
+  KnocbackForce: {x: 2, y: 4}
+  DisableTime: 0.35
 --- !u!61 &2642694089939641188
 BoxCollider2D:
   m_ObjectHideFlags: 0

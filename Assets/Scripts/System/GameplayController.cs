@@ -24,7 +24,22 @@ public class GameplayController : MonoBehaviour
             Instance = this;
 
         if (Instance != this)
-            Destroy(gameObject);
+            Destroy(this);
+
+        if (AudioManeger.Instance == null)
+        {
+            LoadFromResources("AudioManeger");
+        }
+
+        if(TransicaoControl.Instance == null)
+        {
+            LoadFromResources("TransicaoControl");
+        }
+
+        if(CanvasEndGame.Instance == null)
+        {
+            LoadFromResources("CanvasEndGame");
+        }
 
         levels = GetComponentsInChildren<Level>(true);
         levelIndex = -1;
@@ -36,6 +51,12 @@ public class GameplayController : MonoBehaviour
 
     }
 
+    private void LoadFromResources(string objectName)
+    {
+        var aux = Resources.Load<GameObject>(objectName);
+        Instantiate(aux, transform);
+    }
+
     public void StartNextLevel()
     {
 
@@ -43,7 +64,9 @@ public class GameplayController : MonoBehaviour
 
         if (levelIndex >= levels.Length)
         {
-            Debug.Log("End Game");
+            if (CanvasEndGame.Instance != null)
+                CanvasEndGame.Instance.ShowEndGamePanel();
+
             return;
         }
 

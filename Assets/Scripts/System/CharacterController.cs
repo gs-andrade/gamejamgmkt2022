@@ -108,7 +108,7 @@ public class CharacterController : MonoBehaviour, IResetable
     public void AttackStart()
     {
         Chicote.SetActive(true);
-        FindObjectOfType<AudioManeger>().Play("Ataque", 1);
+        AudioManeger.Instance.Play("Ataque", 1);
         attackCd = AttackCd;
     }
 

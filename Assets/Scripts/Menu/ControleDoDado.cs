@@ -27,6 +27,5 @@ public class ControleDoDado : MonoBehaviour
 
             Menu.SetInteger("Estado", Selecionado);
         }
-        Debug.Log(Selecionado);
     }
 }
