@@ -2,29 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NextLevelTrigger : MonoBehaviour, IResetable
+public class NextLevelTrigger : MonoBehaviour
 {
     public Animator Transition;
-
-    private bool triggered;
-    public void ResetObject()
-    {
-        triggered = false;
-    }
-
-    public void SetupOnStartLevel()
-    {
-        triggered = false;
-    }
+    private bool Colidio = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var player = collision.GetComponent<CharacterInstance>();
-
-        if (player != null && !triggered)
+        
+        if (player != null && Colidio == false)
         {
-            triggered = true;
-            TransicaoControl.Instance.FadeInLevelChange();
+            GameplayController.Instance.StartNextLevel();
+
+            if (Transition != null)
+            {
+                Colidio = true;
+                Transition.SetTrigger("SceneChange");
+
+                Invoke("TrocaCena", 1);
+            }
         }
+    }
+
+    public void TrocaCena()
+    {
+        Colidio = false;
     }
 }

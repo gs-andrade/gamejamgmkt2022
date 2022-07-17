@@ -41,6 +41,12 @@ TextureImporter:
   - first:
       213: 8173310297753817631
     second: Chao_6
+  - first:
+      213: -886986015224384461
+    second: Chao_7
+  - first:
+      213: -1379174021742798078
+    second: Chao_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -369,7 +375,7 @@ TextureImporter:
         width: 349
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -377,6 +383,48 @@ TextureImporter:
       bones: []
       spriteID: f1298a8696e6d6170800000000000000
       internalID: 8173310297753817631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chao_7
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 294
+        width: 734
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 334bfc92beac0b3f0800000000000000
+      internalID: -886986015224384461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chao_8
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 116
+        width: 432
+        height: 494
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20bd29ec8803cdce0800000000000000
+      internalID: -1379174021742798078
       vertices: []
       indices: 
       edges: []
