@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManeger : MonoBehaviour
 {
-    public ControleDoDado Estado;
+    //public ControleDoDado Estado;
     public Animator Transition;
 
     void Update()
@@ -19,17 +19,18 @@ public class SceneManeger : MonoBehaviour
 
     public void TrocaCena()
     {
-        //chama a cena com o numero do estado
-        if(Estado.Selecionado == 2)
-        {
-            
             SceneManager.LoadScene(1);
-        }
+        //chama a cena com o numero do estado
+        //if(Estado.Selecionado == 2)
+        //{
+            
+        //    SceneManager.LoadScene(1);
+        //}
 
-        if (Estado.Selecionado == 3)
-        {
-            Application.Quit(0);
-            Debug.Log("Saiu");
-        }
+        //if (Estado.Selecionado == 3)
+        //{
+        //    Application.Quit(0);
+        //    Debug.Log("Saiu");
+        //}
     }
 }

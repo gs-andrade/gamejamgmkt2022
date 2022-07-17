@@ -20,7 +20,7 @@ public class ControleDoDado : MonoBehaviour
             
         }
         
-        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) && Selecionado > 1)
+        if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) && Selecionado > 2)
         {
           
             Selecionado --;
