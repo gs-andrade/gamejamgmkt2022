@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Pedras
+    uniqueID: 455178491
+    locked: 0
+  - name: Grama
+    uniqueID: 2528074219
+    locked: 0
+  - name: Plataforma
+    uniqueID: 251655005
+    locked: 0
+  - name: Personagem
+    uniqueID: 3960191431
+    locked: 0
+  - name: Ponte
+    uniqueID: 566886663
+    locked: 0
