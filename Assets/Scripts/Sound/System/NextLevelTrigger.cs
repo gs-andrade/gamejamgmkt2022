@@ -13,18 +13,20 @@ public class NextLevelTrigger : MonoBehaviour
         
         if (player != null && Colidio == false)
         {
-            Colidio = true;
-            Transition.SetTrigger("SceneChange");
+            GameplayController.Instance.StartNextLevel();
 
-            Invoke("TrocaCena", 1);
-            
+            if (Transition != null)
+            {
+                Colidio = true;
+                Transition.SetTrigger("SceneChange");
+
+                Invoke("TrocaCena", 1);
+            }
         }
     }
 
     public void TrocaCena()
     {
         Colidio = false;
-        GameplayController.Instance.StartNextLevel();
-
     }
 }

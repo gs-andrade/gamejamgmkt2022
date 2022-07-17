@@ -48,7 +48,7 @@ public class GameplayController : MonoBehaviour
             Debug.Log("End Game");
             return;
         }
-        
+
         if (levelCurrent != null)
             levelCurrent.gameObject.SetActive(false);
 
@@ -58,7 +58,8 @@ public class GameplayController : MonoBehaviour
 
         if (levelIndex > 0)
         {
-            Transition.SetTrigger("SceneChange1");
+            if (Transition != null)
+                Transition.SetTrigger("SceneChange1");
         }
     }
 
