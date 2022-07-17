@@ -43,4 +43,132 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1cf3bdc8d95f340956c5be285ea889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - Name: Ataque
+    Clip: {fileID: 8300000, guid: cd1db3fe3c138e04d82b785ee50753eb, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: BossIntro
+    Clip: {fileID: 8300000, guid: 4884329983fb35f4a845e15fc10be260, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: BossMain
+    Clip: {fileID: 8300000, guid: b1974d145f416104e88608015428b380, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: GolpeInimigo
+    Clip: {fileID: 8300000, guid: 5a14b62cebcbab84297bbaa594ed4a84, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: hitHurt
+    Clip: {fileID: 8300000, guid: 236fda2258217e145be001f63292d183, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: IntroJingle
+    Clip: {fileID: 8300000, guid: ea625fe20bc985f4487c1e2d0676cf8b, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: Machado
+    Clip: {fileID: 8300000, guid: 77dd17ae1444c7842bb94ce207829296, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: Map
+    Clip: {fileID: 8300000, guid: 3d2b40f01a3ccb347821555fee253284, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: Map(basicversion)
+    Clip: {fileID: 8300000, guid: 7940b246d6d260942a74279202df5081, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: Mars
+    Clip: {fileID: 8300000, guid: 7e707fcafdc11ee4fb2f0ea644c32661, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: Mercury
+    Clip: {fileID: 8300000, guid: 76edad7c38f912e44870e40896d5c62c, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: MorteInimigo
+    Clip: {fileID: 8300000, guid: 2ff45c217bc008e49b58ae3f0ed08296, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: powerUp
+    Clip: {fileID: 8300000, guid: f4beb96661805c54ab4c80a6795e56ed, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: Venus
+    Clip: {fileID: 8300000, guid: 551d9bbd4961249478a805f411bda152, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: WarpJingle
+    Clip: {fileID: 8300000, guid: 3797fbbfd3ffb274d8c3fc95d7805f95, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}
+  - Name: WinJingle
+    Clip: {fileID: 8300000, guid: 88bdd514ce372f84fa2618bb7cbaa7b7, type: 3}
+    Mixer: {fileID: 0}
+    Loop: 0
+    Priority: 0
+    Volume: 0.5
+    Pitch: 0
+    Source: {fileID: 0}

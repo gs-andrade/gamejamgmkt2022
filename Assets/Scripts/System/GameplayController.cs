@@ -51,6 +51,11 @@ public class GameplayController : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        AudioManeger.Instance.Play("Venus", 1, true);
+    }
+
     private void LoadFromResources(string objectName)
     {
         var aux = Resources.Load<GameObject>(objectName);
