@@ -107,11 +107,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 9
-        width: 143
-        height: 191
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 0
+        width: 169.66667
+        height: 200
+      alignment: 9
+      pivot: {x: 0.3601714, y: 0.40433773}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -127,12 +127,12 @@ TextureImporter:
       name: Gh8st_1
       rect:
         serializedVersion: 2
-        x: 182
-        y: 150
-        width: 8
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 169
+        y: 0
+        width: 169.66667
+        height: 200
+      alignment: 9
+      pivot: {x: 0.45489448, y: 0.43112317}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,12 +148,12 @@ TextureImporter:
       name: Gh8st_2
       rect:
         serializedVersion: 2
-        x: 186
+        x: 338
         y: 0
-        width: 146
-        height: 194
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 170
+        height: 200
+      alignment: 9
+      pivot: {x: 0.52706385, y: 0.4081642}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,27 +161,6 @@ TextureImporter:
       bones: []
       spriteID: d41ba758210977270800000000000000
       internalID: 8248219651775574349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gh8st_3
-      rect:
-        serializedVersion: 2
-        x: 373
-        y: 4
-        width: 136
-        height: 194
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e43bf2bd5d2eb0e20800000000000000
-      internalID: 3317994958621750094
       vertices: []
       indices: 
       edges: []
