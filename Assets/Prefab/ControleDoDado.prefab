@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1334579512243391747}
   - component: {fileID: 1334579512243391746}
   m_Layer: 0
-  m_Name: SceneManeger
+  m_Name: ControleDoDado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
