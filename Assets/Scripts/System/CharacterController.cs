@@ -127,6 +127,7 @@ public class CharacterController : MonoBehaviour, IResetable
         if (!IsAlive())
         {
             character.SetAnimationTrigger("Death");
+            TransicaoControl.Instance.FadeInRestartLevel();
         }
     }
     public void UpdateCharacter()
