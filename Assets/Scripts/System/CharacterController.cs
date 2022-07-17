@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterController : MonoBehaviour, IResetable
 {
@@ -127,7 +128,13 @@ public class CharacterController : MonoBehaviour, IResetable
         if (!IsAlive())
         {
             character.SetAnimationTrigger("Death");
+            Invoke("CallGameover", 3);
         }
+    }
+
+    public void CallGameover()
+    {
+        SceneManager.LoadScene(2);
     }
     public void UpdateCharacter()
     {
