@@ -75,9 +75,15 @@ public abstract class EnemyGeneric : MonoBehaviour, IUpdatable, IResetable, IDam
             SetCurrentLife(LifeMax);
             animator.speed = animationSpeed;
         }
+        else if (lifeCurrent > 1)
+        {
+            SetCurrentLife(lifeCurrent - 1);
+            FindObjectOfType<AudioManeger>().Play("Golpe", 1);
+        }
         else
         {
             SetCurrentLife(lifeCurrent - 1);
+            FindObjectOfType<AudioManeger>().Play("MorteInimigo", 1);
         }
     }
 

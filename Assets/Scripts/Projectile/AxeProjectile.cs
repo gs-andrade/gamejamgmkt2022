@@ -9,6 +9,7 @@ public class AxeProjectile : MonoBehaviour
     public float AliveTime;
     private void OnEnable()
     {
+        FindObjectOfType<AudioManeger>().Play("Machado", 1);
         Rb.AddForce(Force);
         Debug.Log("aqui");
     }
