@@ -9,6 +9,12 @@ public class AxeProjectile : MonoBehaviour
     public float AliveTime;
     private void OnEnable()
     {
+        var playerPos = CharacterController.Instance.GetPlayer().transform.position;
+
+        var dir = Mathf.Sign(playerPos.x - transform.position.x);
+        var distance = Mathf.Abs(playerPos.x - transform.position.x);
+
+        Rb.AddForce(new Vector2(distance * dir * Force.x, Force.y));
         FindObjectOfType<AudioManeger>().Play("Machado", 1);
         Rb.AddForce(Force);
         Debug.Log("aqui");

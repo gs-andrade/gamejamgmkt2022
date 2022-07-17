@@ -17,14 +17,14 @@ public class NextLevelTrigger : MonoBehaviour
             Transition.SetTrigger("SceneChange");
 
             Invoke("TrocaCena", 1);
+            
         }
-
-        
     }
 
     public void TrocaCena()
     {
         Colidio = false;
         GameplayController.Instance.StartNextLevel();
+
     }
 }

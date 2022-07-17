@@ -58,7 +58,7 @@ public class GameplayController : MonoBehaviour
 
         if (levelIndex > 0)
         {
-            Transition.SetTrigger("SceneChange2");
+            Transition.SetTrigger("SceneChange1");
         }
     }
 
