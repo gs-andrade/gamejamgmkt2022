@@ -156,7 +156,6 @@ public class CharacterInstance : MonoBehaviour, IDamagable
         SetAnimationBool("IsWalking", false);
 
 
-        SoundController.instance.PlayAudioEffect("damaged1");
     }
 
 

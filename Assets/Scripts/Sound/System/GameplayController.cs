@@ -9,8 +9,6 @@ public class GameplayController : MonoBehaviour
 
     private GameState state;
 
-    public Animator Transition;
-
     private Level[] levels;
     private Level levelCurrent;
 
@@ -40,7 +38,6 @@ public class GameplayController : MonoBehaviour
 
     public void StartNextLevel()
     {
-
         levelIndex++;
 
         if (levelIndex >= levels.Length)
@@ -55,15 +52,9 @@ public class GameplayController : MonoBehaviour
         levelCurrent = levels[levelIndex];
         levelCurrent.Setup();
         levelCurrent.gameObject.SetActive(true);
-
-        if (levelIndex > 0)
-        {
-            if (Transition != null)
-                Transition.SetTrigger("SceneChange1");
-        }
     }
 
-    private void ResetLevel()
+    public void ResetLevel()
     {
         CharacterController.Instance.ResetObject();
         levelCurrent.ResetLevel();
@@ -84,7 +75,7 @@ public class GameplayController : MonoBehaviour
 #if UNITY_EDITOR
                     if (Input.GetKeyDown(KeyCode.R))
                     {
-                        ResetLevel();
+                        TransicaoControl.Instance.FadeInRestartLevel();
                     }
 #endif
                     break;
