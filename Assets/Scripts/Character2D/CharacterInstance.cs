@@ -154,9 +154,6 @@ public class CharacterInstance : MonoBehaviour, IDamagable
         CharacterController.Instance.TakeDamage();
         SetAnimationTrigger("TakeDamage");
         SetAnimationBool("IsWalking", false);
-
-
-        SoundController.instance.PlayAudioEffect("damaged1");
     }
 
 

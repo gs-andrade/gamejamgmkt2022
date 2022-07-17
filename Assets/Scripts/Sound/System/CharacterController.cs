@@ -201,9 +201,10 @@ public class CharacterController : MonoBehaviour, IResetable
                             if (grounded)
                             {
                                 isWalking = true;
-                                horizontalMOvement = input.Horizontal * Speed;
                                 PlayCharacterSound("pasos");
                             }
+
+                            horizontalMOvement = input.Horizontal * Speed;
                         }
                         else
                         {

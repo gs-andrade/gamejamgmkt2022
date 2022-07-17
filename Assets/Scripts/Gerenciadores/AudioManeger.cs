@@ -26,9 +26,24 @@ public class AudioManeger : MonoBehaviour
     //Toca o audio apartir de dois parametros: Seu nome e seu pitch (entregar o pitch como um parametro permite ser possivel altera-lo por código e randimiza-lo)
     public void Play (string name, float pitch)
     {
-        Sound s = Array.Find(sounds, sound => sound.Name == name);
+        if(sounds != null)
+        {
+            for(int i = 0; i < sounds.Length; i++)
+            {
+                //evitar erro quando nulo
+                var sound = sounds[i];
+                if(sound.Name == name)
+                {
+                    sound.Source.pitch = pitch;
+                    sound.Source.Play();
+                }
+
+            }
+        }
+
+       /* Sound s = Array.Find(sounds, sound => sound.Name == name);
         s.Source.pitch = pitch;
-        s.Source.Play();
+        s.Source.Play();*/
     }
     //Para o audio com o nome
     public void Stop(string name)
