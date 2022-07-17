@@ -7,12 +7,15 @@ public class CharacterController : MonoBehaviour, IResetable
     [Header("Character Attributes")]
     public float Speed;
     public float JumpForce;
+    public int lifeMax;
 
     [Header("Attack")]
     public GameObject Chicote;
     public float AttackCd;
 
     public static CharacterController Instance;
+
+    private int lifeCurrent;
 
     private CharacterInstance character;
 
@@ -28,6 +31,8 @@ public class CharacterController : MonoBehaviour, IResetable
 
     private Vector2 startPosition;
 
+    private bool isAttacking = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,9 +44,13 @@ public class CharacterController : MonoBehaviour, IResetable
         Setup();
     }
 
+    private bool IsAlive()
+    {
+        return lifeCurrent > 0;
+    }
     public void SetupOnStartLevel()
     {
-        //Setup();
+        
     }
 
     public void ForceState(CharacterState newState)
@@ -51,6 +60,10 @@ public class CharacterController : MonoBehaviour, IResetable
 
     public void ResetObject()
     {
+        if (!IsAlive())
+            character.SetAnimationTrigger("Revive");
+
+        lifeCurrent = lifeMax;
         character.SetMovement(Vector2.zero);
         character.transform.position = startPosition;
         AttackFinish();
@@ -62,6 +75,8 @@ public class CharacterController : MonoBehaviour, IResetable
             character = GetComponentInChildren<CharacterInstance>(true);
             character.Setup();
         }
+
+        lifeCurrent = lifeMax;
 
         if (input == null)
             input = new PlayerInput();
@@ -99,12 +114,20 @@ public class CharacterController : MonoBehaviour, IResetable
 
     public void AttackFinish()
     {
+        isAttacking = false;
         Chicote.SetActive(false);
     }
 
     public void TakeDamage()
     {
         AttackFinish();
+
+        lifeCurrent--;
+
+        if (!IsAlive())
+        {
+            character.SetAnimationTrigger("Death");
+        }
     }
     public void UpdateCharacter()
     {
@@ -120,6 +143,9 @@ public class CharacterController : MonoBehaviour, IResetable
             coyoteJump -= Time.deltaTime;
 
         if (character.IsDisabled())
+            return;
+
+        if (!IsAlive())
             return;
 
         input.GetInputs();
@@ -146,7 +172,7 @@ public class CharacterController : MonoBehaviour, IResetable
                         }
                         else
                         {
-                           // SoundController.instance.PlayAudioEffect("pasos", SoundAction.Stop);
+                            // SoundController.instance.PlayAudioEffect("pasos", SoundAction.Stop);
                             character.SetAnimationBool("IsJumping", true);
                         }
 
@@ -164,18 +190,20 @@ public class CharacterController : MonoBehaviour, IResetable
                                 inputDelay = 0.2f;
                                 coyoteJump = 0;
 
+                                if (input.Horizontal != 0)
+                                    horizontalMOvement = input.Horizontal * Speed;
+
                                 //PlayCharacterSound("propulsion-jet-engine");
                             }
                         }
                         else if (input.Horizontal != 0)
                         {
                             if (grounded)
+                            {
                                 isWalking = true;
-
-                            horizontalMOvement = input.Horizontal * Speed;
-
-                            if (grounded)
+                                horizontalMOvement = input.Horizontal * Speed;
                                 PlayCharacterSound("pasos");
+                            }
                         }
                         else
                         {
@@ -186,11 +214,19 @@ public class CharacterController : MonoBehaviour, IResetable
                         if (input.Attack && attackCd <= 0)
                         {
                             character.SetAnimationTrigger("Attack");
+
+                            if (grounded)
+                                isAttacking = true;
                         }
 
                         // character.SetAnimationBool("Attack", false);
+                        if (grounded)
+                        {
+                            if (isAttacking)
+                                horizontalMOvement = 0;
 
-                        character.SetXVelocity(horizontalMOvement, !Chicote.activeInHierarchy);
+                            character.SetXVelocity(horizontalMOvement, !Chicote.activeInHierarchy);
+                        }
 
                         character.SetAnimationBool("IsWalking", isWalking);
 

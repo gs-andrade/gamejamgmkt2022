@@ -19,22 +19,22 @@ public class SoundController : MonoBehaviour
 
     public void Setup()
     {
-        var effectClips = Resources.LoadAll<AudioClip>("Sounds");
-        Sounds = new AudioSource[effectClips.Length];
+        //var effectClips = Resources.LoadAll<AudioClip>("Sounds");
+       // Sounds = new AudioSource[effectClips.Length];
 
-        for (int i = 0; i < effectClips.Length; i++)
+       /* for (int i = 0; i < effectClips.Length; i++)
         {
             var audioSource = Instantiate(SoundPrefab, transform).GetComponent<AudioSource>();
             audioSource.clip = effectClips[i];
             audioSource.gameObject.name = effectClips[i].name;
             Sounds[i] = audioSource;
             audioSource.volume = 0.1f;
-        }
+        }*/
     }
 
     public void PlayAudioEffect(string name, SoundAction action = SoundAction.Play)
     {
-        for (int i = 0; i < Sounds.Length; i++)
+        /*for (int i = 0; i < Sounds.Length; i++)
         {
             var effect = Sounds[i];
             if (effect.name == name)
@@ -50,7 +50,7 @@ public class SoundController : MonoBehaviour
                     effect.Play();
 
             }
-        }
+        }*/
     }
 
 }
