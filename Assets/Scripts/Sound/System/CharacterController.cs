@@ -127,7 +127,6 @@ public class CharacterController : MonoBehaviour, IResetable
         if (!IsAlive())
         {
             character.SetAnimationTrigger("Death");
-            character.SetXVelocity(0);
         }
     }
     public void UpdateCharacter()
