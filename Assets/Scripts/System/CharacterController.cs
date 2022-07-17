@@ -31,6 +31,8 @@ public class CharacterController : MonoBehaviour, IResetable
 
     private Vector2 startPosition;
 
+    private bool isAttacking = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -48,7 +50,7 @@ public class CharacterController : MonoBehaviour, IResetable
     }
     public void SetupOnStartLevel()
     {
-        lifeCurrent = lifeMax;
+        
     }
 
     public void ForceState(CharacterState newState)
@@ -58,6 +60,9 @@ public class CharacterController : MonoBehaviour, IResetable
 
     public void ResetObject()
     {
+        if (!IsAlive())
+            character.SetAnimationTrigger("Revive");
+
         lifeCurrent = lifeMax;
         character.SetMovement(Vector2.zero);
         character.transform.position = startPosition;
@@ -70,6 +75,8 @@ public class CharacterController : MonoBehaviour, IResetable
             character = GetComponentInChildren<CharacterInstance>(true);
             character.Setup();
         }
+
+        lifeCurrent = lifeMax;
 
         if (input == null)
             input = new PlayerInput();
@@ -106,6 +113,7 @@ public class CharacterController : MonoBehaviour, IResetable
 
     public void AttackFinish()
     {
+        isAttacking = false;
         Chicote.SetActive(false);
     }
 
@@ -134,6 +142,9 @@ public class CharacterController : MonoBehaviour, IResetable
             coyoteJump -= Time.deltaTime;
 
         if (character.IsDisabled())
+            return;
+
+        if (!IsAlive())
             return;
 
         input.GetInputs();
@@ -178,7 +189,7 @@ public class CharacterController : MonoBehaviour, IResetable
                                 inputDelay = 0.2f;
                                 coyoteJump = 0;
 
-                                if(input.Horizontal != 0)
+                                if (input.Horizontal != 0)
                                     horizontalMOvement = input.Horizontal * Speed;
 
                                 //PlayCharacterSound("propulsion-jet-engine");
@@ -202,11 +213,17 @@ public class CharacterController : MonoBehaviour, IResetable
                         if (input.Attack && attackCd <= 0)
                         {
                             character.SetAnimationTrigger("Attack");
+
+                            if (grounded)
+                                isAttacking = true;
                         }
 
                         // character.SetAnimationBool("Attack", false);
                         if (grounded)
                         {
+                            if (isAttacking)
+                                horizontalMOvement = 0;
+
                             character.SetXVelocity(horizontalMOvement, !Chicote.activeInHierarchy);
                         }
 

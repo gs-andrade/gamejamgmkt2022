@@ -86,9 +86,9 @@ public class EnemyPatrol : EnemyGeneric
                 var direction = nextLocation.x - cachedTf.position.x;
 
                 if (direction > 0)
-                    cachedTf.localScale = new Vector3(1, 1, 1);
-                else
                     cachedTf.localScale = new Vector3(-1, 1, 1);
+                else
+                    cachedTf.localScale = new Vector3(1, 1, 1);
             }
         }
     }

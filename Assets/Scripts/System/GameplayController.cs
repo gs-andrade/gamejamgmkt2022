@@ -56,7 +56,7 @@ public class GameplayController : MonoBehaviour
 
     private void ResetLevel()
     {
-        CharacterController.Instance.ForceState(CharacterState.Normal);
+        CharacterController.Instance.ResetObject();
         levelCurrent.ResetLevel();
     }
 
